@@ -28,5 +28,5 @@ Analog inputs (0 – 10V DC)
 2:   Black:   NC
 3:   Brown:   Solar Panel -
 
-Datasheet:   https://drive.google.com/open?id=1xrWT3RAunsUA2zPa81mDG6Bhfj5KWJ9q&usp=drive_fs
-User Guide:  https://drive.google.com/open?id=1wJ-agAPGaFs4atMrA9r0l8Xo0Ni5H9ff&usp=drive_fs
+Datasheet:   https://norvi.lk/docs/norvi-ec-m11-bc-c1-b95-datasheet/
+User Guide:  https://norvi.lk/docs/norvi-ec-m11-bc-c1-b95-user-guide/
