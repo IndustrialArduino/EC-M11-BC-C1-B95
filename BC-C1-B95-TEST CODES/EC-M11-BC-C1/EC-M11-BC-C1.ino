@@ -7,16 +7,15 @@
  * 
  */
 
-#include <Adafruit_ADS1X15.h> 
+#include <Adafruit_ADS1015.h>
 
-Adafruit_ADS1115 ads1;
+Adafruit_ADS1015 ads1(0x49);
 String adcString[8];
 
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
-  Serial1.begin(9600);
   Wire.begin(16,17);
 
   Serial.println("The device is powered up");
@@ -25,11 +24,13 @@ void setup() {
   pinMode(34, INPUT);    // Digital Input 2
 
   pinMode(21, INPUT);    // ADS1115 Interrupt
-    
-  pinMode(13, OUTPUT);    // RS-485 flow control
-  pinMode(32, OUTPUT);    // SIM7000 Power - only on LTE version
 
-  digitalWrite(13, HIGH);
+  pinMode(36, INPUT);    // Analog input-battery voltage monitor
+    
+  pinMode(18, OUTPUT);    // 12V boosted output enable
+  //pinMode(32, OUTPUT);    // SIM7000 Power - only on LTE version
+
+  
   
   ads1.begin();
   ads1.setGain(GAIN_ONE);
@@ -42,10 +43,18 @@ void loop() {
   // put your main code here, to run repeatedly:
   Serial.print("I1: ");Serial.println(digitalRead(35));
   Serial.print("I2: ");Serial.println(digitalRead(34));
+  Serial.print("Battery Voltage: ");Serial.println(readBattery());
   delay(800);
   printanalog();
   delay(800);
-  Serial1.println("RS-485 TX TEST");
+  digitalWrite(18,HIGH);
+  delay(800);
+}
+
+int readBattery(){
+  unsigned int analog_value;
+  analog_value = analogRead(36);
+  return analog_value;
 }
 
 void printanalog(){
